@@ -460,5 +460,123 @@ label meet_heroine_1:
     mc "「哦」"
     "我收拾好桌上的圖書，跟上了她的步伐。"
     "在這個冷漠又倉促的世界裡，我似乎……終於找到了屬於自己的答案與起點。"
+label explore_town:
+    $ explore_places = []
+    
+    label explore_menu:
+        scene bg_street_day with fade
+        "雾乃走在我旁边半步的位置，不说话，也不催我。"
+        "手机没电之后，街道看起来和平时不太一样——像是某个被按了暂停键的角落。"
+        
+        menu:
+            "去哪里？"
+            "教室" if "classroom" not in explore_places:
+                $ explore_places.append("classroom")
+                call explore_classroom
+            "走廊" if "hallway" not in explore_places:
+                $ explore_places.append("hallway")
+                call explore_hallway
+            "天台" if "rooftop" not in explore_places:
+                $ explore_places.append("rooftop")
+                call explore_rooftop
+            "河堤" if "riverbank" not in explore_places:
+                $ explore_places.append("riverbank")
+                call explore_riverbank
+            "神社（结束探索）" if len(explore_places) >= 3:
+                jump shrine_entrance
+
+label explore_classroom:
+    scene bg_classroom with fade
+    "教室空着。黑板上留着上一节课的板书，值日生还没擦。"
+    
+    show mist_normal at center
+    mist "你平时上课就坐这里？"
+    mc "靠窗，倒数第二排。方便发呆。"
+    
+    "我拉开椅子坐下。抽屉里有一张揉皱的传单，是上个月校庆的。"
+    "上面印着「全体学生务必参加」——我去了，因为所有人都去了。"
+    
+    mist "你好像很习惯做「所有人都做的事」。"
+    mc "因为不做的话会很麻烦。老师会问，同学会看，家长会接到通知。"
+    mc "而且……你不觉得吗？按规矩来，至少不会出错。"
+    
+    mist "不会出错，也不会是你自己。"
+    
+    "我没有回答。因为她说得对，但「对」不一定能让人活下去。"
+    
+    "我把传单揉回抽屉里。"
+   label explore_hallway:
+    scene bg_hallway with fade
+    "走廊上贴满了社团招新海报。有几张被撕了一半，露出下面更旧的海报。"
+    
+    show classmate_normal at right
+    classmate "哟，你今天居然没戴耳机。"
+    mc "手机没电。"
+    classmate "那不是世界末日吗？我上次手机没电，在地铁上差点跟陌生人说话。"
+    
+    "他说这话的时候在笑，但我听得出他是认真的。"
+    "没有手机的时候，我们不知道眼睛该往哪里放。"
+    
+    classmate "不过说真的，你不觉得现在这样……有点奇怪吗？"
+    mc "什么奇怪？"
+    classmate "就是，大家都知道该做什么，该说什么，该在什么时候笑。"
+    classmate "但没有人问「为什么」。"
+    
+    "他说完就摆摆手走了，好像刚才那段话是不小心漏出来的。"
+    
+    show mist_normal at center
+    mist "他其实知道。"
+    mc "知道什么？"
+    mist "知道自己在演。只是不知道不演的话，还能是谁。"
+    
+    label explore_rooftop:
+    scene bg_rooftop with fade
+    "天台的门没锁。风很大，吹得铁丝网嗡嗡响。"
+    
+    "我靠在栏杆上。从这里可以看到学校的全貌——教学楼、操场、停车场，全都整整齐齐。"
+    "像一张已经画好的地图。每个人都在自己的格子里移动。"
+    
+    mist "你昨晚没睡好？"
+    mc "……怎么看出来的？"
+    mist "你一直用右手捏左手手腕。你紧张或者累的时候会这样。"
+    
+    "我低头看了看自己的手。她说得对。"
+    
+    mc "中四开始的。晚上躺下去，脑子就自己开始转。"
+    mc "想今天说错的话，想明天要做的事，想一些根本不会发生的画面。"
+    mc "有时候转到凌晨三四点，然后天就亮了。"
+    
+    mist "你试过停下来吗？"
+    mc "试过。数羊、深呼吸、听白噪音。没用。"
+    mc "后来我发现，越想停，它转得越快。"
+    
+    show mist_serious at center
+    mist "因为那些念头不是你「想」出来的。是你压下去的东西自己浮上来的。"
+    mist "你白天太努力做「对的事」了。晚上它们就来找你算账。"
+    
+    "风把她的头发吹到脸上。她没有去拨。"
+    
+label explore_riverbank:
+    scene bg_riverbank with fade
+    "河堤上没什么人。水面反着灰白色的光。"
+    "我们走了一段，谁也没说话。这大概是我最近最不紧张的一段时间。"
+    
+    show mist_normal at center
+    mist "你不用一直想要说什么。"
+    mc "……抱歉。习惯了。"
+    mist "习惯什么？"
+    mc "习惯让气氛不要太尴尬。习惯让别人觉得我很好相处。"
+    mc "习惯……扮演一个「没有问题」的人。"
+    
+    "雾乃停下来，看着河面。"
+    mist "那你现在可以不用扮演。"
+    mist "这里只有我。而我知道你有问题。"
+    
+    "我笑了一下。不是礼貌的那种笑。"
+    
+    mc "你知道吗，你是第一个说「我知道你有问题」还让我觉得安心的人。"
+    
+    
+    jump explore_menu
 
     return
